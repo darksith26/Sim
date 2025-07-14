@@ -1,0 +1,128 @@
+/* --- Global Styles & Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+:root {
+    --snap-yellow: #FFFC00;
+    --snap-black: #000000;
+    --snap-white: #FFFFFF;
+    --snap-gray: #3F3F3F;
+    --snap-light-gray: #EFEFEF;
+    --snap-link-blue: #00A9F4;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', 'Avenir Next', sans-serif;
+    background-color: var(--snap-black);
+    color: var(--snap-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* --- Main Container & Logo --- */
+.main-container {
+    background-color: var(--snap-yellow);
+    width: 100%;
+    max-width: 480px;
+    padding: 30px;
+    color: var(--snap-black);
+    border-radius: 8px;
+    margin-top: 5vh;
+}
+
+.logo-container {
+    margin-bottom: 24px;
+}
+
+.logo-svg {
+    width: 60px;
+    height: auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+p.description {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* --- Form Elements --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"] {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--snap-light-gray);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--snap-black);
+}
+
+input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+input:focus {
+    outline: 2px solid var(--snap-link-blue);
+}
+
+button[type="submit"] {
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--snap-gray);
+    color: var(--snap-white);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #555555;
+}
+
+.link-forgot {
+    color: var(--snap-link-blue);
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: -8px; /* Pulls it closer to the password field */
+    font-size: 0.9rem;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 20px;
+}
+
+.footer-link {
+    color: var(--snap-white);
+    text-decoration: none;
+    font-weight: 700;
+    margin: 0 15px;
+    font-size: 0.9rem;
+}

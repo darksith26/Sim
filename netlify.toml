@@ -1,0 +1,11 @@
+[build]
+  # This command is not strictly necessary if your function has no external
+  # dependencies, but it is best practice.
+  command = "echo 'No build command needed'"
+  functions = "netlify/functions"
+
+# This rewrite ensures that direct access to the function URL is clean.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

